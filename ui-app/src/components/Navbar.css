@@ -1,0 +1,23 @@
+.nav-wrapper {
+  width: 100%;
+  padding: 20px;
+  background-color: rgb(16 185 129);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.links-wrapper {
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  justify-content: end;
+  gap: 12px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 14pt;
+}
