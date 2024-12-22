@@ -1,10 +1,11 @@
 .nav-wrapper {
   width: 100%;
   padding: 20px;
-  background-color: rgb(16 185 129);
+  background-color: rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 2px solid rgb(250, 247, 247);
 }
 
 .links-wrapper {
@@ -17,7 +18,28 @@
 
 .nav-link {
   text-decoration: none;
+  color: rgba(113, 113, 122, 0.8);
+  font-weight: 500;
+  font-size: 12pt;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link-err {
+  text-decoration: none;
   color: white;
   font-weight: 500;
   font-size: 14pt;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-icon {
+  color: rgb(16 185 129);
+}
+
+.nav-icon-err {
+  color: white;
 }
