@@ -39,7 +39,7 @@ def business_user_list(request):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['DELETE'])
+@api_view(['DELETE', 'PUT'])
 @permission_classes([IsAuthenticated])
 def business_user_delete(request, pk):
     try:
@@ -47,8 +47,16 @@ def business_user_delete(request, pk):
     except BusinessUser.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    user.delete()
-    return Response(status=status.HTTP_204_NO_CONTENT)
+    if request.method == 'PUT':
+        serializer = BusinessUserSerializer(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
