@@ -12,7 +12,7 @@ from rest_framework.permissions import AllowAny,IsAuthenticated
 
 SystemUser = get_user_model()
 
-@api_view(['GET', 'POST', 'PUT'])
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def business_user_list(request):
     if request.method == 'GET':
@@ -25,18 +25,6 @@ def business_user_list(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    elif request.method == 'PUT':
-        try:
-            user = BusinessUser.objects.get(pk=request.data['id'])
-        except BusinessUser.DoesNotExist:
-            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
-
-        serializer = BusinessUserSerializer(user, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['DELETE', 'PUT'])

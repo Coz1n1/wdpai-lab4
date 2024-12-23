@@ -65,7 +65,7 @@ const Register = () => {
               Password
             </label>
             <input
-              type="text"
+              type="password"
               id="password"
               placeholder="Password"
               className="form-input"
@@ -79,7 +79,7 @@ const Register = () => {
               Repeat Password
             </label>
             <input
-              type="text"
+              type="password"
               id="repeatPassword"
               placeholder="Repeat Password"
               className="form-input"
